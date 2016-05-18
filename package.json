@@ -1,0 +1,26 @@
+{
+  "name": "scanex-second",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run watch",
+    "server": "serve -p 3001",
+    "watch": "watchify -v -d ./src/index.js -o ./js/bundle.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "less": "^2.7.1",
+    "serve": "^1.4.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "geojson-extent": "^0.3.2",
+    "lazy.js": "^0.4.2",
+    "leaflet": "^0.7.7",
+    "lodash": "^4.12.0",
+    "rbush": "^1.4.2"
+  }
+}
