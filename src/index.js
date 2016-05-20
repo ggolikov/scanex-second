@@ -21,8 +21,9 @@ function eachAsync(collection, iterator, callback) {
 }
 
 // map
-var map = global.map = L.map('map', { minZoom: 4})
-.setView([55.75, 37.6], 10);
+var map = global.map = L.map('map', { minZoom: 0})
+.setView([55.75, 15], 4);
+// .setView([55.75, 37.6], 10);
 
 // basemap
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -83,7 +84,6 @@ function processGeoJSON(geojson, callback) {
 // remove overlays
 function removeOverlays(tree){
   searchTree = rbush();
-  var deleted = 0;
 
   // sort geoJSON data by id
   var searched = tree.all().sort(function(a,b) {
@@ -94,20 +94,14 @@ function removeOverlays(tree){
   // removing overlapping features
   for (var i = 1; i < searched.length; i++) {
     var item = searched[i];
-    var bottomLeft  = [item[0], item[1], item[0], item[1]];
-    var topLeft     = [item[0], item[3], item[0], item[3]];
-    var topRight    = [item[2], item[3], item[2], item[3]];
-    var bottomRight = [item[0], item[3], item[0], item[3]];
-
-    if (
-      searchTree.collides(bottomLeft) &&
-      searchTree.collides(topLeft) &&
-      searchTree.collides(bottomRight) &&
-      searchTree.collides(topRight)
-      ) {
-        tree.remove(item);
+    var center = [
+                  (item[0] + (item[2] - item[0])/2), (item[1] + (item[3] - item[1])/2),
+                  (item[0] + (item[2] - item[0])/2), (item[1] + (item[3] - item[1])/2)
+                ];
+    if (searchTree.collides(center)) {
+      tree.remove(item);
     } else {
-        searchTree.insert(item);
+      searchTree.insert(item);
     }
   }
 }
