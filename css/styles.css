@@ -2,10 +2,18 @@ html, body, #map {
 	width: 100%;
 	height: 100%;
 	margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#file {
+
+.controls {
   position: absolute;
   top: 20px;
   right: 20px;
+  padding: 5px;
   background-color: white;
+  font-size: 12px;
+}
+
+.controls label {
+  display: block;
 }

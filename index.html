@@ -1,14 +1,31 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test-2</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+    <title>canvas</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script type="text/javascript" src="http://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+
+    <!-- L 0.7.7 styles -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+
+    <!-- L 1.0.0 styles -->
+    <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" /> -->
+
+    <!-- L 0.7.7 -->
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="src/L.CanvasOverlay.js"></script>
+
+    <!-- L 1.0.0 -->
+    <!-- <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script> -->
   </head>
   <body>
-  	<div id="map"></div>
+
+    <div id="map"></div>
+    <div class="leaflet-bar controls">
       <input id="file" type="file"/>
+      <label><input type="checkbox" id="remove-overlaps"> Remove overlapping</label>
+    </div>
+
   	<script type="text/javascript" src="js/bundle.js"></script>
   </body>
 </html>
